@@ -1,0 +1,196 @@
+@font-face {
+	font-family: 'Outfit';
+	font-display: swap;
+	font-weight: 300;
+	src: url(../assets/fonts/Outfit-Light.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'Outfit';
+	font-display: swap;
+	font-weight: 400;
+	src: url(../assets/fonts/Outfit-Regular.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'Outfit';
+	font-display: swap;
+	font-weight: 600;
+	src: url(../assets/fonts/Outfit-SemiBold.ttf) format('truetype');
+}
+
+:root {
+	--clr-p-blue500: hsl(215, 51%, 70%);
+	--clr-p-cyan400: hsl(178, 100%, 50%);
+	--clr-p-cyan400-overlay: hsla(178, 100%, 50%, 0.5);
+	--clr-mainBg: hsl(217, 54%, 11%);
+	--clr-cardBg: hsl(216, 50%, 16%);
+	--clr-divisor: hsl(215, 32%, 27%);
+	--clr-white: hsl(0, 0%, 100%);
+
+	--ff: 'Outfit', sans-serif;
+
+	--fs-300: 1rem;
+	--fs-400: 1.125rem;
+	--fs-600: 1.5rem;
+
+	--fw-light: 300;
+	--fw-regular: 400;
+	--fw-semibold: 600;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font: inherit;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+body {
+	font-family: var(--ff);
+	font-size: var(--fs-400);
+	font-weight: var(--fw-regular);
+	background-color: var(--clr-mainBg);
+	color: var(--clr-white);
+}
+
+main {
+	min-height: 100vh;
+	display: grid;
+	place-content: center;
+	padding: 1rem;
+}
+
+.card {
+
+	background-color: var(--clr-cardBg);
+	border-radius: 0.75rem;
+	max-inline-size: 300px;
+	padding: 1.5rem;
+
+	.card__img {
+
+		position: relative;
+		border-radius: 0.75rem;
+		margin-block-end: 1.5rem;
+		overflow: hidden;
+		/* eliminar esquinas visibles al hacer click */
+		-webkit-tap-highlight-color: transparent;
+		cursor: pointer;
+
+		&::after{
+
+			content:"";
+			position: absolute;
+			inset: 0;
+			background-color: var(--clr-p-cyan400);
+			background-color: var(--clr-p-cyan400-overlay);
+			background-image: url(../assets/images/icon-view.svg);
+			background-repeat: no-repeat;
+			background-position: center;
+			opacity: 0;
+
+		}
+
+		&:hover::after{
+			opacity: 1;
+		}
+		
+	}
+}
+
+.card__content {
+
+	h1 {
+
+		font-size: var(--fs-600);
+		font-weight: var(--fw-semibold);
+
+		&:hover{
+			color: var(--clr-p-cyan400);
+			cursor: pointer;
+		}
+		
+	}
+
+	p {
+		color: var(--clr-p-blue500);
+		font-size: var(--fs-300);
+		font-weight: var(--fw-light);
+		margin-block: 1rem;
+	}
+}
+.card__pricetime {
+
+  font-size: var(--fs-300);
+  
+	display: flex;
+	justify-content: space-between;
+  
+	span {
+
+		color: var(--clr-p-cyan400);
+    font-weight: var(--fw-semibold);
+
+		&::before {
+			content: url(../assets/images/icon-ethereum.svg);
+			margin-inline-end: 0.4rem;
+      vertical-align: middle;
+		}
+	}
+
+	time {
+
+		color: var(--clr-p-blue500);
+    font-weight: var(--fw-light);
+
+		&::before {
+
+			content: url(../assets/images/icon-clock.svg);
+			margin-inline-end: 0.4rem;
+      vertical-align: middle;
+		}
+	}
+}
+.card__divisor {
+	margin-block: 1rem;
+	height: 0.063rem;
+	background-color: var(--clr-divisor);
+}
+.card__author {
+	font-size: var(--fs-300);
+	font-weight: var(--fw-light);
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+
+	.author__img {
+		width: 2rem;
+		border-radius: 50%;
+		border: 1px solid var(--clr-white);
+	}
+
+	p{
+		color: var(--clr-p-blue500);
+	}
+
+	span {
+
+		color: var(--clr-white);
+
+		&:hover{
+			color: var(--clr-p-cyan400);
+			cursor: pointer;
+		}
+
+	}
+}
